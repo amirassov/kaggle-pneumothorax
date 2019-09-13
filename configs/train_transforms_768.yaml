@@ -1,0 +1,111 @@
+__version__: "0.3.1"
+transform:
+  __class_fullname__: albumentations.core.composition.Compose
+  additional_targets: {}
+  bbox_params: {}
+  keypoint_params: {}
+  p: 1
+  transforms:
+    -
+      __class_fullname__: albumentations.augmentations.transforms.HorizontalFlip
+      always_apply: false
+      p: 0.5
+    -
+      __class_fullname__: albumentations.core.composition.OneOf
+      p: 0.3
+      transforms:
+        -
+          __class_fullname__: albumentations.augmentations.transforms.RandomBrightnessContrast
+          always_apply: false
+          brightness_limit:
+            - -0.2
+            - 0.2
+          contrast_limit:
+            - -0.2
+            - 0.2
+          p: 0.5
+    -
+      __class_fullname__: albumentations.core.composition.OneOf
+      p: 0.3
+      transforms:
+        -
+          __class_fullname__: albumentations.augmentations.transforms.ElasticTransform
+          alpha: 120
+          alpha_affine: 3.5999999999999996
+          always_apply: false
+          approximate: false
+          border_mode: 0
+          interpolation: 1
+          mask_value: ~
+          p: 0.5
+          sigma: 6
+          value: ~
+        -
+          __class_fullname__: albumentations.augmentations.transforms.GridDistortion
+          always_apply: false
+          border_mode: 0
+          distort_limit:
+            - -0.3
+            - 0.3
+          interpolation: 1
+          mask_value: ~
+          num_steps: 5
+          p: 0.5
+          value: ~
+        -
+          __class_fullname__: albumentations.augmentations.transforms.OpticalDistortion
+          always_apply: false
+          border_mode: 0
+          distort_limit:
+            - -2
+            - 2
+          interpolation: 1
+          mask_value: ~
+          p: 0.5
+          shift_limit:
+            - -0.5
+            - 0.5
+          value: ~
+    -
+      __class_fullname__: albumentations.augmentations.transforms.ShiftScaleRotate
+      always_apply: false
+      border_mode: 0
+      interpolation: 1
+      mask_value: ~
+      p: 0.5
+      rotate_limit:
+        - -20
+        - 20
+      scale_limit:
+        - -0.2
+        - 0.2
+      shift_limit:
+        - -0.2
+        - 0.2
+      value: ~
+    -
+      __class_fullname__: albumentations.augmentations.transforms.Resize
+      always_apply: true
+      height: 768
+      interpolation: 1
+      p: 1
+      width: 768
+    -
+      __class_fullname__: albumentations.augmentations.transforms.RandomCrop
+      always_apply: true
+      height: 512
+      p: 1
+      width: 512
+    -
+      __class_fullname__: albumentations.augmentations.transforms.Normalize
+      always_apply: false
+      max_pixel_value: 255
+      mean:
+        - 0.485
+        - 0.456
+        - 0.406
+      p: 1
+      std:
+        - 0.229
+        - 0.224
+        - 0.225
