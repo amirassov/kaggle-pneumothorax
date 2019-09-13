@@ -34,3 +34,8 @@ bash test.sh
 bash ensemble.sh
 bash submit.sh
 ```
+
+## References
+* https://github.com/albu/albumentations
+* https://github.com/open-mmlab/mmdetection
+* https://github.com/SpaceNetChallenge/SpaceNet_Off_Nadir_Solutions/blob/master/selim_sef
