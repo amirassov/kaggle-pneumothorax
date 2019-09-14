@@ -1,6 +1,5 @@
 import argparse
 import os.path as osp
-import pickle
 from collections import defaultdict
 from glob import glob
 from typing import Dict
@@ -33,8 +32,7 @@ def make_ensemble(path_pattern: str) -> Dict[str, Dict[str, np.ndarray]]:
 def main():
     args = parse_args()
     ensemble_predictions = make_ensemble(args.path_pattern)
-    with open(osp.join(args.output, f'ensemble.pkl'), 'wb') as handle:
-        mmcv.dump(dict(ensemble_predictions), handle, protocol=pickle.HIGHEST_PROTOCOL)
+    mmcv.dump(dict(ensemble_predictions), osp.join(args.output, f'ensemble.pkl'))
 
 
 if __name__ == '__main__':
